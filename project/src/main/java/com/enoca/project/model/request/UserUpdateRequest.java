@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserUpdateRequest {
 
+
     private String firstName;
 
     private String lastName;
@@ -21,5 +22,5 @@ public class UserUpdateRequest {
 
     private Gender gender;
 
-    private Company company;
+    private Long id;
 }

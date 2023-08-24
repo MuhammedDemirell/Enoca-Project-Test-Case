@@ -2,10 +2,12 @@ package com.enoca.project.service;
 
 
 import com.enoca.project.model.dto.UserDto;
+import com.enoca.project.model.entity.Company;
 import com.enoca.project.model.entity.User;
 import com.enoca.project.model.mapper.UserMapper;
 import com.enoca.project.model.request.UserCreateRequest;
 import com.enoca.project.model.request.UserUpdateRequest;
+import com.enoca.project.repository.CompanyRepository;
 import com.enoca.project.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,7 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final CompanyRepository companyRepository;
 
 
     @Transactional(readOnly = true)
@@ -42,13 +45,14 @@ public class UserService {
 
     public UserUpdateRequest updateOneUser(Long userId, UserUpdateRequest userUpdateRequest) {
         User user = userRepository.findById(userId).orElseThrow();
+        Company company = companyRepository.findById(userUpdateRequest.getId()).orElseThrow();
         user.setFirstName(user.getFirstName());
         user.setLastName(user.getLastName());
         user.setEmail(user.getEmail());
         user.setPhoneNumber(user.getPhoneNumber());
         user.setGender(user.getGender());
         user.setPhoneNumber(user.getPhoneNumber());
-        user.setCompany(user.getCompany());
+        user.setCompany(company);
         userMapper.toUserUpdate(userUpdateRequest, user);
         userRepository.save(user);
         return userUpdateRequest;

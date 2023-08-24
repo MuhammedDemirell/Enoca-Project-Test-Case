@@ -28,7 +28,7 @@ public class UserDto {
 
     private Gender gender;
 
-    private Company company;
+    private CompanyDto company;
 
     @Override
     public boolean equals(Object o) {

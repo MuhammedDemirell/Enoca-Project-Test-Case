@@ -2,6 +2,7 @@ package com.enoca.project.model.dto;
 
 import com.enoca.project.model.entity.Company;
 import com.enoca.project.model.entity.User;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CompanyDto {
 
     private Long id;
@@ -28,7 +30,7 @@ public class CompanyDto {
 
     private int employeeCount;
 
-    private Set<User> user;
+    private Set<UserDto> user;
 
     @Override
     public boolean equals(Object o) {
