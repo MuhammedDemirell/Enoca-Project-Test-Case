@@ -3,7 +3,7 @@ package com.enoca.project.model.exception;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
-import static com.demirel.socialmedia.util.CommonConstants.EXCEPTION.DEFAULT_CODE;
+import static com.enoca.project.util.CommonConstants.EXCEPTION.DEFAULT_CODE;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 @Getter
