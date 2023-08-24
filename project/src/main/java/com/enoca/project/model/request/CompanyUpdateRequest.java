@@ -24,4 +24,6 @@ public class CompanyUpdateRequest {
     private int employeeCount;
 
     private Set<User> user;
+
+    private Long id;
 }
