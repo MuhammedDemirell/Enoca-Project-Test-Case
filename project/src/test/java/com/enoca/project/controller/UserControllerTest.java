@@ -54,14 +54,14 @@ class UserControllerTest {
         mockCreateUserRequest.setCompany(null);
         mockCreateUserRequest.setId(1L);
         mockCreateUserRequest.setGender(MALE);
-        mockCreateUserRequest.setEmail("muhammed_demirell@hotmail.com");
+        mockCreateUserRequest.setEmail("muhammed_muhammed@hotmail.com");
         mockCreateUserRequest.setFirstName("muhammed");
         mockCreateUserRequest.setLastName("demirel");
         assertEquals("muhammed", mockCreateUserRequest.getFirstName());
         assertEquals("demirel", mockCreateUserRequest.getLastName());
         assertEquals(null,mockCreateUserRequest.getCompany());
         assertEquals(MALE, mockCreateUserRequest.getGender());
-        assertEquals("muhammed_demirell@hotmail.com", mockCreateUserRequest.getEmail());
+        assertEquals("muhammed_muhammed@hotmail.com", mockCreateUserRequest.getEmail());
         assertEquals(1L, mockCreateUserRequest.getId());
     }
 }
