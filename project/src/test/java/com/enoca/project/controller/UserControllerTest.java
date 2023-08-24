@@ -34,8 +34,8 @@ class UserControllerTest {
         UserRepository userRepository = mock(UserRepository.class);
 
         List<User> usersToSave = new ArrayList<>();
-        usersToSave.add(new User(1L, "muhammed", "123", "muhammed_demirell@hotmail.com", "05453513511", MALE, null));
-        usersToSave.add(new User(2L, "nur", "321", "nur_demirell@hotmail.com", "05453513512", FEMALE, null));
+        usersToSave.add(new User(1L, "muhammed", "123", "muhammed_muhammed@hotmail.com", "05453513511", MALE, null));
+        usersToSave.add(new User(2L, "nur", "321", "nur_nur@hotmail.com", "05453513512", FEMALE, null));
 
         when(userRepository.saveAll(usersToSave)).thenReturn(usersToSave);
 
