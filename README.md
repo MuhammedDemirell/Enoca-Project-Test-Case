@@ -50,7 +50,7 @@ Bu projede Swagger kullanılarak API endpoint'leri belgelenmiştir. Swagger belg
 
 1. Projeyi başlattıktan sonra tarayıcınızda aşağıdaki linke gidin:
 
-http://localhost:8080/swagger-ui.html
+          http://localhost:8080/swagger-ui.html
 
 2. Swagger arayüzünde, projenin sunmuş olduğu API endpoint'lerini görsel olarak görebilir ve test edebilirsiniz.
 
