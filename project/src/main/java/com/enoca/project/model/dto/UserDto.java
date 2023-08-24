@@ -44,5 +44,4 @@ public class UserDto {
     public int hashCode() {
         return Objects.hash(id);
     }
-
 }

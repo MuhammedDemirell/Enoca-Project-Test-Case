@@ -1,9 +1,9 @@
 package com.enoca.project.service;
 
 import com.enoca.project.model.dto.CompanyDto;
-import com.enoca.project.model.dto.UserDto;
 import com.enoca.project.model.entity.Company;
-import com.enoca.project.model.entity.User;
+import com.enoca.project.model.exception.BusinessValidationException;
+import com.enoca.project.model.exception.BusinessValidationRule;
 import com.enoca.project.model.mapper.CompanyMapper;
 import com.enoca.project.model.request.CompanyCreateRequest;
 import com.enoca.project.model.request.CompanyUpdateRequest;
@@ -17,12 +17,13 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CompanyService {
+
     private final CompanyRepository companyRepository;
     private final CompanyMapper companyMapper;
 
 
     public List<CompanyDto> getAllCompanies() {
-        List<Company> companyList = companyRepository.findAll();
+        List<Company> companyList = companyRepository.findAllCompanies();
         List<CompanyDto> list = companyList.stream().map(companyMapper::toCompanyDto).toList();
         return list;
     }
@@ -34,13 +35,12 @@ public class CompanyService {
     }
 
     public CompanyDto getOneCompany(Long companyId) {
-        Company company = companyRepository.findById(companyId).orElseThrow();
+        Company company = companyRepository.findById(companyId).orElseThrow(() -> new BusinessValidationException(BusinessValidationRule.COMPANY_NOT_FOUND));
         return companyMapper.toCompanyDto(company);
-
     }
 
     public CompanyUpdateRequest updateOneCompany(Long userId, CompanyUpdateRequest companyUpdateRequest) {
-        Company company = companyRepository.findById(userId).orElseThrow();
+        Company company = companyRepository.findById(userId).orElseThrow(() -> new BusinessValidationException(BusinessValidationRule.COMPANY_NOT_FOUND));
         company.setName(company.getName());
         company.setAddress(company.getAddress());
         company.setPhoneNumber(company.getPhoneNumber());
@@ -54,6 +54,7 @@ public class CompanyService {
     }
 
     public void deleteById(Long companyId) {
-        companyRepository.deleteById(companyId);
+        Company company = companyRepository.findById(companyId).orElseThrow(() -> new BusinessValidationException(BusinessValidationRule.COMPANY_NOT_FOUND));
+        companyRepository.deleteById(company.getId());
     }
 }

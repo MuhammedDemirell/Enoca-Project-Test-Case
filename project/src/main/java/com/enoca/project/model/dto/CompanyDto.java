@@ -44,6 +44,4 @@ public class CompanyDto {
     public int hashCode() {
         return Objects.hash(id);
     }
-
-
 }

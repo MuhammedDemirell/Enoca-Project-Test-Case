@@ -27,6 +27,5 @@ public interface CompanyMapper {
     Company toCompanyCreate(CompanyCreateRequest companyCreateRequest);
 
     Company toCompanyUpdate(CompanyUpdateRequest companyUpdateRequest, @MappingTarget Company company);
-
 }
 

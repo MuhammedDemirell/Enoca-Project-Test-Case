@@ -10,11 +10,7 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 public enum BusinessValidationRule implements IBusinessValidationRule {
 
     USER_NOT_FOUND("0001", "Kullanıcı Bulunmadı!"),
-    USER_AND_POST_NOT_FOUND("0002", "Kullanıcı veya Post Bulunmadı!"),
-    POST_NOT_FOUND("0003", "Post Bulunmadı!"),
-    LIKE_NOT_DELETED("0004", "Like Silinemedi!"),
-    LIKE_NOT_FOUND("0005", "Like Bulunamadı!"),
-    LIKE_NOT_CREATED("0006", "Like Oluşturulamadı!");
+    COMPANY_NOT_FOUND("0007", "Şirket Bulunamadı!");
 
     private String code = DEFAULT_CODE;
     private final String message;
@@ -24,6 +20,7 @@ public enum BusinessValidationRule implements IBusinessValidationRule {
         this.code = code;
         this.message = message;
     }
+
     BusinessValidationRule(String code, String message, HttpStatus httpStatus) {
         this.code = code;
         this.message = message;

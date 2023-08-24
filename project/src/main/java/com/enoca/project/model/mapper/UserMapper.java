@@ -28,6 +28,5 @@ public interface UserMapper {
     User toUserCreate(UserCreateRequest userCreateRequest);
 
     User toUserUpdate(UserUpdateRequest userUpdateRequest, @MappingTarget User user);
-
 }
 

@@ -4,6 +4,8 @@ package com.enoca.project.service;
 import com.enoca.project.model.dto.UserDto;
 import com.enoca.project.model.entity.Company;
 import com.enoca.project.model.entity.User;
+import com.enoca.project.model.exception.BusinessValidationException;
+import com.enoca.project.model.exception.BusinessValidationRule;
 import com.enoca.project.model.mapper.UserMapper;
 import com.enoca.project.model.request.UserCreateRequest;
 import com.enoca.project.model.request.UserUpdateRequest;
@@ -27,7 +29,7 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public List<UserDto> getAllUsers() {
-        List<User> userList = userRepository.findAll();
+        List<User> userList = userRepository.findAllUsers();
         List<UserDto> list = userList.stream().map(userMapper::toUserDto).toList();
         return list;
     }
@@ -39,13 +41,13 @@ public class UserService {
     }
 
     public UserDto getOneUser(Long userId) {
-        User user = userRepository.findById(userId).orElseThrow();
+        User user = userRepository.findById(userId).orElseThrow(() -> new BusinessValidationException(BusinessValidationRule.USER_NOT_FOUND));
         return userMapper.toUserDto(user);
     }
 
     public UserUpdateRequest updateOneUser(Long userId, UserUpdateRequest userUpdateRequest) {
-        User user = userRepository.findById(userId).orElseThrow();
-        Company company = companyRepository.findById(userUpdateRequest.getId()).orElseThrow();
+        User user = userRepository.findById(userId).orElseThrow(() -> new BusinessValidationException(BusinessValidationRule.USER_NOT_FOUND));
+        Company company = companyRepository.findById(userUpdateRequest.getId()).orElseThrow(() -> new BusinessValidationException(BusinessValidationRule.COMPANY_NOT_FOUND));
         user.setFirstName(user.getFirstName());
         user.setLastName(user.getLastName());
         user.setEmail(user.getEmail());
@@ -59,7 +61,7 @@ public class UserService {
     }
 
     public void deleteById(Long userId) {
-        userRepository.deleteById(userId);
+        User user = userRepository.findById(userId).orElseThrow(() -> new BusinessValidationException(BusinessValidationRule.USER_NOT_FOUND));
+        userRepository.deleteById(user.getId());
     }
-
 }
