@@ -14,6 +14,7 @@ Bu doküman, **Enoca-Project-Test-Case** isimli projenin MVC (Model-View-Control
 ## Kurulum
 
 1. **Bağımlılıklar**: Projenin gereksinim duyduğu bağımlılıklar [pom.xml] dosyasında belirtilmiştir. Maven kullanıyorsanız, gerekli bağımlılıklar otomatik olarak indirilir.
+
 2. **Veritabanı Konfigürasyonu**: Proje veritabanı ayarlarını [application.yaml] dosyasından yapılandırabilirsiniz.
 
 ## Çalıştırma
