@@ -1,6 +1,6 @@
 # Enoca-Project-Test-Case
 
-# Proje Adı - MVC Uygulama Dokümantasyonu
+# Proje Adı - Enoca-Project-Test-Case
 
 Bu doküman, **Enoca-Project-Test-Case** isimli projenin MVC (Model-View-Controller) mimarisine dayalı olarak nasıl çalıştığını ve servislerin nasıl kullanıldığını açıklamaktadır.
 
